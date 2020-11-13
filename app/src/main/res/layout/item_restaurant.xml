@@ -2,13 +2,15 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="20sp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvRestaurant"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         app:cardCornerRadius="20dp" >
 
         <LinearLayout
@@ -19,8 +21,8 @@
             <ImageView
                 android:id="@+id/ivImgRestaurant"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="fitXY"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/iv_restaurant"
                 app:srcCompat="@drawable/image1" />
 
@@ -32,21 +34,24 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Name Placeholder" />
+                android:text="Name Placeholder"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/tvRestaurantAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:text="Address Placeholder" />
+                android:text="Address Placeholder"
+                tools:ignore="HardcodedText"  />
 
             <TextView
                 android:id="@+id/tvRestaurantClosingTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:text="Fecha às 22:00" />
+                android:text="Fecha às 22:00"
+                tools:ignore="HardcodedText"  />
 
         </LinearLayout>
 

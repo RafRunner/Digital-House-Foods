@@ -1,12 +1,10 @@
 package com.example.digitalhousefoods.domain
 
-import java.time.LocalTime
-
 class Restaurant(
     val name: String,
     val imageId: Int,
     val address: String,
-    val closingTime: LocalTime,
+    val closingTime: String,
     var plates: List<Plate>
 ) {
     override fun toString(): String {
