@@ -37,12 +37,12 @@ class RegisterActivity : AppCompatActivity() {
         val confirmedPassword = tiConfirmPassword.text.toString()
 
         if (password.length < 8) {
-            Toast.makeText(this, "Password must be at least 8 characters long!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.password_warning), Toast.LENGTH_LONG).show()
             return null
         }
 
         if (password != confirmedPassword) {
-            Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.passwords_dont_match), Toast.LENGTH_LONG).show()
             return null
         }
 

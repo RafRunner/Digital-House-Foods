@@ -12,5 +12,10 @@
     <!-- activity_register -->
     <string name="ti_name">Name</string>
     <string name="ti_confirm_password">Confirm password</string>
+    <string name="password_warning">Your password must be at least 8 characters long!</string>
+    <string name="passwords_dont_match">Passwords do not match!</string>
+
+    <!-- item_restaurant -->
+    <string name="iv_restaurant">Photo of the restaurant</string>
 
 </resources>
