@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.digitalhousefoods.R
 import com.example.digitalhousefoods.domain.Restaurant
 
-class RestaurantsAdapter(private val restaurantList: List<Restaurant>) :
+class RestaurantsAdapter(private val restaurantList: MutableList<Restaurant>, private val onRestaurantClicked: (r: Restaurant) -> Unit) :
     RecyclerView.Adapter<RestaurantsAdapter.RestaurantsViewHolder>() {
 
     class RestaurantsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        var restaurantId: Int = 0
         val ivImgRestaurant: ImageView = view.findViewById(R.id.ivImgRestaurant)
         val tvRestaurantName: TextView = view.findViewById(R.id.tvRestaurantName)
         val tvRestaurantAddress: TextView = view.findViewById(R.id.tvRestaurantAddress)
@@ -27,10 +28,15 @@ class RestaurantsAdapter(private val restaurantList: List<Restaurant>) :
     override fun onBindViewHolder(holder: RestaurantsViewHolder, position: Int) {
         val restaurant = restaurantList[position]
 
+        holder.restaurantId = restaurant.id
         holder.ivImgRestaurant.setImageResource(restaurant.imageId)
         holder.tvRestaurantName.text = restaurant.name
         holder.tvRestaurantAddress.text = restaurant.address
         holder.tvRestaurantClosingTime.text = holder.view.resources.getString(R.string.tv_closing_time).format(restaurant.closingTime)
+
+        holder.view.setOnClickListener {
+            onRestaurantClicked(restaurant)
+        }
 
         if (position == itemCount - 1) {
             val params = holder.itemView.layoutParams as RecyclerView.LayoutParams

@@ -3,20 +3,19 @@ package com.example.digitalhousefoods.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.digitalhousefoods.R
 import com.example.digitalhousefoods.domain.Restaurant
 import com.example.digitalhousefoods.domain.User
 import com.example.digitalhousefoods.ui.adapters.RestaurantsAdapter
 import kotlinx.android.synthetic.main.activity_restaurants.*
-import java.time.LocalTime
-import java.time.temporal.TemporalAccessor
 
 class RestaurantsActivity : AppCompatActivity() {
 
     private val TAG: String = "RestaurantsActivity"
     private val restaurantsList = getAllRestaurants()
-    private val adapter = RestaurantsAdapter(restaurantsList)
+    private val adapter = RestaurantsAdapter(restaurantsList, ::callRestaurantDetails)
 
     lateinit var user: User
 
@@ -40,13 +39,17 @@ class RestaurantsActivity : AppCompatActivity() {
         rcRestaurantsList.setHasFixedSize(false)
     }
 
+    private fun callRestaurantDetails(restaurant: Restaurant) {
+        Toast.makeText(this, "Restaurant ${restaurant.name} clicked!", Toast.LENGTH_LONG).show()
+    }
+
     // Em um aplicativo de verdade estaria em um service e pegaria de alguma API
-    private fun getAllRestaurants(): List<Restaurant> {
+    private fun getAllRestaurants(): MutableList<Restaurant> {
         return mutableListOf(
-            Restaurant("Tony Roma's", R.drawable.image1, "Av. Lavandisca, 717 - Indianópolis, São Paulo", "22:00", listOf()),
-            Restaurant("Aoyama - Moema", R.drawable.image4, "Alameda dos Arapanés, 532 - Moema", "00:00", listOf()),
-            Restaurant("Outback - Moema", R.drawable.image5, "Av. Moaci, 187, 187 - Moema, São Paulo", "00:00", listOf()),
-            Restaurant("Sí Señor!", R.drawable.image3, "Alameda Jauaperi, 626 - Moema", "01:00", listOf()),
+            Restaurant(1, "Tony Roma's", R.drawable.image1, "Av. Lavandisca, 717 - Indianópolis, São Paulo", "22:00"),
+            Restaurant(2, "Aoyama - Moema", R.drawable.image4, "Alameda dos Arapanés, 532 - Moema", "00:00"),
+            Restaurant(3, "Outback - Moema", R.drawable.image5, "Av. Moaci, 187, 187 - Moema, São Paulo", "00:00"),
+            Restaurant(4, "Sí Señor!", R.drawable.image3, "Alameda Jauaperi, 626 - Moema", "01:00"),
         )
     }
 }
