@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigitalHouseFoods">
+        <activity android:name=".ui.PlateDetailActivity" />
         <activity android:name=".ui.RestaurantDetailsActivity" />
         <activity
             android:name=".ui.RestaurantsActivity"

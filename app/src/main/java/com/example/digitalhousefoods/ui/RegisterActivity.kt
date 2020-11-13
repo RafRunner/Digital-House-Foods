@@ -3,6 +3,7 @@ package com.example.digitalhousefoods.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.digitalhousefoods.R
 import com.example.digitalhousefoods.domain.User
@@ -11,17 +12,14 @@ import kotlinx.android.synthetic.main.user_email_password.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    private val TAG: String = "RegisterActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val partialUser = intent.getSerializableExtra("user") as? User
-
-        if (partialUser != null) {
-            tiEmail.setText(partialUser.email)
-            tiPassword.setText(partialUser.password)
-            tiConfirmPassword.setText(partialUser.password)
-        }
+        val partialUser = (intent.getSerializableExtra("user") as? User)!!
+        Log.i(TAG, "Partial User recieved $partialUser")
 
         btnRegister.setOnClickListener {
             val user = getUser() ?: return@setOnClickListener

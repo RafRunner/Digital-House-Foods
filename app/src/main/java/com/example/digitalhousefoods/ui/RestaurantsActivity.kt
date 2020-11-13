@@ -23,16 +23,8 @@ class RestaurantsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurants)
 
-        val user = intent.getSerializableExtra("user") as? User
-
-        // Nunca deve acontecer, se acontecer é falha do programador
-        if (user == null) {
-            Log.e(TAG, "User was not recieved on onCreate")
-            finish()
-            return
-        }
-
-        this.user = user
+        this.user = (intent.getSerializableExtra("user") as? User)!!
+        Log.i(TAG, "User recieved $user")
 
         rcRestaurantsList.adapter = restaurantsAdapter
         rcRestaurantsList.layoutManager = LinearLayoutManager(this)

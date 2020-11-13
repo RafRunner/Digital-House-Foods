@@ -1,5 +1,6 @@
 package com.example.digitalhousefoods.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +11,12 @@ import com.example.digitalhousefoods.domain.Plate
 import com.example.digitalhousefoods.domain.Restaurant
 import com.example.digitalhousefoods.ui.adapters.PlatesAdapter
 import kotlinx.android.synthetic.main.activity_restaurant_details.*
+import kotlinx.android.synthetic.main.header_details.*
 
 class RestaurantDetailsActivity : AppCompatActivity() {
 
     private val TAG: String = "RestaurantDetailsActivity"
+    private val platesList = getAllPlates()
 
     lateinit var restaurant: Restaurant
     lateinit var platesAdapter: PlatesAdapter
@@ -22,30 +25,25 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_details)
 
-        val restaurant = intent.getSerializableExtra("restaurant") as? Restaurant
+        this.restaurant = (intent.getSerializableExtra("restaurant") as? Restaurant)!!
+        Log.i(TAG, "Restaurant recieved $restaurant")
 
-        // Nunca deve acontecer, se acontecer é falha do programador
-        if (restaurant == null) {
-            Log.e(TAG, "Restaurant was not recieved on onCreate")
-            finish()
-            return
-        }
-
-        this.restaurant = restaurant
         this.platesAdapter = PlatesAdapter(getRestaurantPlates(restaurant), ::callPlateDetails)
 
-        ivImgRestaurant.setImageResource(restaurant.imageId)
-        tvRestaurantName.text = restaurant.name
+        ivImgDetails.setImageResource(restaurant.imageId)
+        tvDetailsTitle.text = restaurant.name
 
         rcPlatesList.adapter = platesAdapter
         rcPlatesList.layoutManager = GridLayoutManager(this, 2)
         rcPlatesList.setHasFixedSize(false)
 
-        btnBack.setOnClickListener { finish() }
+        btnDetailsBack.setOnClickListener { finish() }
     }
 
     private fun callPlateDetails(plate: Plate) {
-        Toast.makeText(this, "Plate ${plate.name} clicked!", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, PlateDetailActivity::class.java)
+        intent.putExtra("plate", plate)
+        startActivity(intent)
     }
 
 
@@ -87,5 +85,5 @@ class RestaurantDetailsActivity : AppCompatActivity() {
     }
 
     private fun getRestaurantPlates(restaurant: Restaurant): MutableList<Plate> =
-        getAllPlates().filter { it.restaurantId == restaurant.id }.toMutableList()
+        platesList.filter { it.restaurantId == restaurant.id }.toMutableList()
 }

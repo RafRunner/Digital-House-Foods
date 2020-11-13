@@ -21,47 +21,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <include
+                android:id="@+id/restaurantDetails"
+                layout="@layout/header_details"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivImgRestaurant"
-                    android:layout_width="wrap_content"
-                    android:layout_height="300dp"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/iv_restaurant"
-                    app:srcCompat="@drawable/image1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/tvRestaurantName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Name Placeholder"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText" />
-
-                <ImageButton
-                    android:id="@+id/btnBack"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_margin="10dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-                    android:contentDescription="@string/ib_back_arrow"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcPlatesList"
