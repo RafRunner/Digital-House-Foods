@@ -9,13 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigitalHouseFoods">
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".ui.RestaurantsActivity"
+            android:parentActivityName="com.example.digitalhousefoods.ui.MainActivity" />
+
+        <activity android:name=".ui.RegisterActivity" />
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
