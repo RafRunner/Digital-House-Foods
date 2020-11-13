@@ -8,7 +8,7 @@ import com.example.digitalhousefoods.domain.User
 
 class RestaurantsActivity : AppCompatActivity() {
 
-    val TAG: String = RestaurantsActivity::class.simpleName ?: ""
+    private val TAG: String = "RestaurantsActivity"
 
     lateinit var user: User
 
@@ -18,7 +18,7 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val user = intent.getSerializableExtra("user") as? User
 
-        // Nunca deve acontecer
+        // Nunca deve acontecer, se acontecer é falha do programador
         if (user == null) {
             Log.e(TAG, "User was not recieved on onCreate")
             finish()
