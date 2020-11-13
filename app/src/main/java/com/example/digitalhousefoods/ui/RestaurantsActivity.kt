@@ -1,9 +1,9 @@
 package com.example.digitalhousefoods.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.digitalhousefoods.R
 import com.example.digitalhousefoods.domain.Restaurant
@@ -15,7 +15,7 @@ class RestaurantsActivity : AppCompatActivity() {
 
     private val TAG: String = "RestaurantsActivity"
     private val restaurantsList = getAllRestaurants()
-    private val adapter = RestaurantsAdapter(restaurantsList, ::callRestaurantDetails)
+    private val restaurantsAdapter = RestaurantsAdapter(restaurantsList, ::callRestaurantDetails)
 
     lateinit var user: User
 
@@ -34,13 +34,15 @@ class RestaurantsActivity : AppCompatActivity() {
 
         this.user = user
 
-        rcRestaurantsList.adapter = adapter
+        rcRestaurantsList.adapter = restaurantsAdapter
         rcRestaurantsList.layoutManager = LinearLayoutManager(this)
         rcRestaurantsList.setHasFixedSize(false)
     }
 
     private fun callRestaurantDetails(restaurant: Restaurant) {
-        Toast.makeText(this, "Restaurant ${restaurant.name} clicked!", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, RestaurantDetailsActivity::class.java)
+        intent.putExtra("restaurant", restaurant)
+        startActivity(intent)
     }
 
     // Em um aplicativo de verdade estaria em um service e pegaria de alguma API

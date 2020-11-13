@@ -46,5 +46,4 @@ class RestaurantsAdapter(private val restaurantList: MutableList<Restaurant>, pr
     }
 
     override fun getItemCount(): Int = restaurantList.size
-
 }

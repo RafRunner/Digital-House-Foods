@@ -19,4 +19,7 @@
     <string name="iv_restaurant">Photo of the restaurant</string>
     <string name="tv_closing_time">Fecha às %s</string>
 
+    <!-- activity_restaurant_details -->
+    <string name="ib_back_arrow">Back arrow</string>
+
 </resources>
